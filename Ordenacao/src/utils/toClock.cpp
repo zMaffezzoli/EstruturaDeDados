@@ -19,5 +19,5 @@ void medirTempo(function<void (vector<int>&)> metodoOrdenamento, vector<int> &va
     auto duracaoMs = duration_cast<milliseconds>(fim - inicio).count();
     // ≈ em UTF-8 = 0xE2 0x89 0x88
 
-    cout << "Tempo de execucao " << metodo << " com " << valores.size() << " valores: " << duracaoNs << "ns" " \xE2\x89\x88 " << duracaoMs << "ms" << endl;
+    cout << "Tempo de execucao " << metodo << " com " << valores.size() << " valores: " << duracaoNs << "ns \xE2\x89\x88 " << duracaoMs << "ms" << endl;
 }
