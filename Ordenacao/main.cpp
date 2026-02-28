@@ -8,7 +8,7 @@
 using namespace std;
 
 
-// g++ main.cpp generateValues.cpp bubbleSort.cpp quickSort.cpp mergeSort.cpp toClock.cpp
+// g++ -Iinclude main.cpp src/sorts/bubbleSort.cpp src/sorts/quickSort.cpp src/sorts/mergeSort.cpp src/utils/generateValues.cpp src/utils/toClock.cpp
 int main() {
     // Valores gerados aleatoriamente
     vector<int> valoresBubble = geraValores(10);

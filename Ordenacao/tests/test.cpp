@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// g++ test.cpp generateValues.cpp bubbleSort.cpp quickSort.cpp mergeSort.cpp
+// g++ -Iinclude tests/test.cpp src/sorts/bubbleSort.cpp src/sorts/quickSort.cpp src/sorts/mergeSort.cpp src/utils/generateValues.cpp
 int main() {
     // Valores gerados aleatoriamente
     vector<int> valoresBubble = geraValores(1000);

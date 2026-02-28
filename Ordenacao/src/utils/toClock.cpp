@@ -15,7 +15,7 @@ void medirTempo(function<void (vector<int>&)> metodoOrdenamento, vector<int> &va
     metodoOrdenamento(valores); // executa a função de ordenação
     auto fim = high_resolution_clock::now();
 
-    auto duracao = duration_cast<milliseconds>(fim - inicio).count();
+    auto duracao = duration_cast<nanoseconds>(fim - inicio).count();
 
-    cout << "Tempo de execucao " << metodo << " com " << valores.size() << " valores: " << duracao << " ms" << endl;
+    cout << "Tempo de execucao " << metodo << " com " << valores.size() << " valores: " << duracao << " ns" << endl;
 }
