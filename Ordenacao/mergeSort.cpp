@@ -1,9 +1,11 @@
+#include "sort.h"
+
 #include <vector>
 #include <limits>
 
 using namespace std;
 
-void merge(vector<int> &lista, int inicial, int meio, int final){
+static void merge(vector<int> &lista, int inicial, int meio, int final){
     int qtd_listaL = meio - inicial + 1;
     int qtd_listaR = final - meio;
 
@@ -35,11 +37,17 @@ void merge(vector<int> &lista, int inicial, int meio, int final){
     }
 }
 
-void mergeSort(vector<int> &lista, int inicial, int final){
+static void mergeSortRec(vector<int> &lista, int inicial, int final){
     if (inicial < final){
-        int meio = (inicial + final) / 2;
-        mergeSort(lista, inicial, meio);
-        mergeSort(lista, meio + 1, final);
+        int meio = inicial + (final - inicial) / 2; // Evita overflow
+        mergeSortRec(lista, inicial, meio);
+        mergeSortRec(lista, meio + 1, final);
         merge(lista, inicial, meio, final);
+    }
+}
+
+void mergeSort(vector<int>& lista) {
+    if (!lista.empty()) {
+        mergeSortRec(lista, 0, lista.size() - 1);
     }
 }
