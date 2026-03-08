@@ -30,19 +30,19 @@ int main(){
         printf("Lista vazia\n");
     }
 
-    // Testa retirar um elemento em diferentes posicoes
-    // NoLista *retirar = sllRetira(lista, 2);
-    // sllImprime(retirar);
+    // Testa retirar um elemento em diferentes posicoes (Descomente as linhas e teste cada um)
+    // lista = sllRetira(lista, 2);
+    // sllImprime(lista);
 
-    // NoLista *retirar = sllRetira(lista, 1);
-    // sllImprime(retirar);
+    // lista = sllRetira(lista, 1);
+    // sllImprime(lista);
 
-    // NoLista *retirar = sllRetira(lista, 3);
-    // sllImprime(retirar);
+    // lista = sllRetira(lista, 3);
+    // sllImprime(lista);
 
     // Recebe o head caso nao ache o elemento
-    NoLista *retirar = sllRetira(lista, 4);
-    sllImprime(retirar);
+    lista = sllRetira(lista, 4);
+    sllImprime(lista);
 
     sllLibera(lista);
     lista = NULL; // Comente e veja que dará erro, pois a lista já não existe
