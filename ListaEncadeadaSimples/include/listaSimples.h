@@ -17,5 +17,7 @@ int sllComprimento(NoLista *head);
 NoLista *sllUltimo();
 NoLista *sllRetira(NoLista *head, int v);
 void sllLibera(NoLista *head);
-
+void sllLiberaRecursivo(NoLista *head);
+NoLista *sllInsereFim(NoLista *head, int v);
+NoLista *sllRetiraRecursivo(NoLista *head, int v);
 #endif

@@ -106,3 +106,39 @@ void sllLibera(NoLista *head){
         free(temp);
     }
 }
+
+NoLista *sllRetiraRecursivo(NoLista *head, int v){
+    if (head == NULL){
+        return NULL;
+    } else if (head->info == v){
+        NoLista *aux = head;
+        head = head->prox;
+
+        free(aux);
+    } else{
+        head->prox = sllRetiraRecursivo(head->prox, v);
+    }
+
+    return head;
+}
+
+void sllLiberaRecursivo(NoLista *head){
+    if (head != NULL){
+        NoLista *prox = head->prox;
+
+        free(head);
+
+        sllLiberaRecursivo(prox);
+    }
+}
+
+NoLista *sllInsereFim(NoLista *head, int v){
+    if(head->prox == NULL){
+        NoLista *novo = (NoLista*) malloc(sizeof(NoLista));
+        novo->info = v;
+        head->prox = novo;
+    } else{
+        sllInsereFim(head->prox, v);
+    }
+    return head;
+}

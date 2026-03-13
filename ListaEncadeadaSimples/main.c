@@ -7,6 +7,7 @@ int main(){
     lista = sllInsere(lista, 3);
     lista = sllInsere(lista, 2);
     lista = sllInsere(lista, 1);
+    lista = sllInsereFim(lista, 4);
     
     sllImprime(lista);
 
@@ -37,14 +38,14 @@ int main(){
     // lista = sllRetira(lista, 1);
     // sllImprime(lista);
 
-    // lista = sllRetira(lista, 3);
-    // sllImprime(lista);
-
-    // Recebe o head caso nao ache o elemento
-    lista = sllRetira(lista, 4);
+    lista = sllRetiraRecursivo(lista, 3);
     sllImprime(lista);
 
-    sllLibera(lista);
+    // Recebe o head caso nao ache o elemento
+    // lista = sllRetira(lista, 4);
+    // sllImprime(lista);
+
+    sllLiberaRecursivo(lista);
     lista = NULL; // Comente e veja que dará erro, pois a lista já não existe
     
     printf("Comprimento da lista: %d\n", sllComprimento(lista));
