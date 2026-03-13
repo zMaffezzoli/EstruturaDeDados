@@ -7,14 +7,13 @@ NoLista *sllCria(void){
 }
 
 NoLista *sllInsere(NoLista *head, int v){
-    NoLista *new;
 
-    new = (NoLista*) malloc(sizeof(NoLista));
+    NoLista *novo = (NoLista*) malloc(sizeof(NoLista)); // Aloca local de memoria e retorna o ponteiro do tipo NoLista
 
-    new->info = v;
-    new->prox = head;
+    novo->info = v;
+    novo->prox = head;
 
-    return new;
+    return novo;
 }
 
 void sllImprime(NoLista *head){
@@ -113,8 +112,8 @@ NoLista *sllRetiraRecursivo(NoLista *head, int v){
     } else if (head->info == v){
         NoLista *aux = head;
         head = head->prox;
-
         free(aux);
+
     } else{
         head->prox = sllRetiraRecursivo(head->prox, v);
     }
@@ -141,4 +140,52 @@ NoLista *sllInsereFim(NoLista *head, int v){
         sllInsereFim(head->prox, v);
     }
     return head;
+}
+
+int sllIgual(NoLista *head1, NoLista *head2){
+    while (head1 != NULL && head2 != NULL){
+        if (head1->info != head2->info){
+            return 0;
+            
+        }else{
+            head1 = head1->prox;
+            head2 = head2->prox;
+        }
+    }
+
+    if (head1 == head2){ // Os dois devem chegar com o valor NULL
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
+int sllIgualRecursivo(NoLista *head1, NoLista *head2){
+    if (head1 == NULL && head2 == NULL){
+        return 1;
+    }
+
+    else{
+        if (head1 == NULL || head2 == NULL){
+            return 0;
+        }
+        else{
+            return ((head1->info == head2->info) && sllIgualRecursivo(head1->prox, head2->prox));
+        }
+    }
+}
+
+void sllImprimeRecursivo(NoLista *head){
+    if (head != NULL){
+        printf("%d\n", head->info);
+        sllImprimeRecursivo(head->prox);
+    }
+}
+
+int sllComprimentoRecursivo(NoLista *head){
+    if (head == NULL){
+        return 0;
+    }
+
+    return 1 + sllComprimentoRecursivo(head->prox);
 }

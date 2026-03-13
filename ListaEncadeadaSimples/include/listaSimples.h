@@ -7,17 +7,27 @@ struct noLista {
 };
 
 typedef struct noLista NoLista;
+NoLista *sllInsere(NoLista *head, int v);
+NoLista *sllInsereFim(NoLista *head, int v);
 
 NoLista *sllCria(void);
-NoLista *sllInsere(NoLista *head, int v);
-void sllImprime(NoLista *head);
 int sllVazia(NoLista *head);
 NoLista *sllBusca(NoLista *head, int v);
+NoLista *sllUltimo(NoLista *head);
+
+void sllImprime(NoLista *head);
+void sllImprimeRecursivo(NoLista *head);
+
 int sllComprimento(NoLista *head);
-NoLista *sllUltimo();
+int sllComprimentoRecursivo(NoLista *head);
+
 NoLista *sllRetira(NoLista *head, int v);
+NoLista *sllRetiraRecursivo(NoLista *head, int v);
+
 void sllLibera(NoLista *head);
 void sllLiberaRecursivo(NoLista *head);
-NoLista *sllInsereFim(NoLista *head, int v);
-NoLista *sllRetiraRecursivo(NoLista *head, int v);
+
+int sllIgual(NoLista *head1, NoLista *head2);
+int sllIgualRecursivo(NoLista *head1, NoLista *head2);
+
 #endif
