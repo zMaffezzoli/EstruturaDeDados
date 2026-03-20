@@ -100,9 +100,6 @@ NoListaDupla *dllRetira(NoListaDupla *head, char *v){
             
             free(temp);
         }
-
-
-        return head;
     }
     
     return head;
