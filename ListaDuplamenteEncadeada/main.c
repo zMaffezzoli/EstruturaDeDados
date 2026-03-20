@@ -1,6 +1,7 @@
 #include "listaDupla.h"
 #include <stdio.h>
 
+// gcc -Iinclude main.c src/listaDupla.c -o playlist.o && ./playlist
 void main(){
     printf("Criando playlist com 6 músicas padrões: \n");
 
@@ -38,7 +39,7 @@ void main(){
     dllImprime(playlist);
 
     printf("\n");
-    
+
     printf("Removendo música \"Imagine\" por título: \n");
     playlist = dllRetira(playlist, "Imagine");
     dllImprime(playlist);
