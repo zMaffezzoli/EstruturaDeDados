@@ -1,7 +1,7 @@
 #include "listaDupla.h"
 #include <stdio.h>
 
-// gcc -Iinclude main.c src/listaDupla.c -o playlist.o && ./playlist
+// gcc -Iinclude main.c src/listaDupla.c -o playlist.o && ./playlist.o
 void main(){
     printf("Criando playlist com 6 músicas padrões: \n");
 
@@ -42,5 +42,39 @@ void main(){
 
     printf("Removendo música \"Imagine\" por título: \n");
     playlist = dllRetira(playlist, "Imagine");
+    dllImprime(playlist);
+
+    printf("\n");
+
+    printf("Removendo 1º música por posição: \n");
+    playlist = dllRetiraPosicao(playlist, 1);
+    dllImprime(playlist);
+
+    printf("\n");
+
+    printf("Removendo 4º música por posição: \n");
+    playlist = dllRetiraPosicao(playlist, 4);
+    dllImprime(playlist);
+
+    printf("\n");
+
+    printf("Tentando remover 7º música por posição: \n");
+    playlist = dllRetiraPosicao(playlist, 7);
+    dllImprime(playlist);
+
+    printf("\n");
+
+    printf("Removendo 6º música por posição: \n");
+    playlist = dllRetiraPosicao(playlist, 6);
+    dllImprime(playlist);
+
+    printf("\n");
+    printf("Movendo música \"Welcome to the Jungle\" por título para a 4º posição: \n");
+    playlist = dllmove(playlist, "Welcome to the Jungle", 4);
+    dllImprime(playlist);
+
+    printf("\n");
+    printf("Movendo música 2º posição para a 4º posição: \n");
+    playlist = dllmovePosicao(playlist, 2, 4);
     dllImprime(playlist);
 }

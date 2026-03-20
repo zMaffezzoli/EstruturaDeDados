@@ -20,5 +20,8 @@ NoListaDupla *dllRetira(NoListaDupla *head, char *v);
 void dllLibera(NoListaDupla *head);
 NoListaDupla *dllInsereFim(NoListaDupla *head, char *v);
 NoListaDupla *dllInserePosicao(NoListaDupla *head, char *v, int posicao);
+NoListaDupla *dllRetiraPosicao(NoListaDupla *head, int posicao);
+NoListaDupla *dllmove(NoListaDupla *head, char *v, int posicaoFinal);
+NoListaDupla *dllmovePosicao(NoListaDupla *head, int posicaoAtual, int posicaoFinal);
 
 #endif

@@ -174,3 +174,47 @@ NoListaDupla *dllInserePosicao(NoListaDupla *head, char *v, int posicao){
     
     return head;
 }
+
+NoListaDupla *dllRetiraPosicao(NoListaDupla *head, int posicao){
+    if (posicao < 1 || posicao > dllComprimento(head)){
+        printf("Posição inválida!\nNão é possível remover música na posição %dº. Insira uma posição válida. \n", posicao); // Se eu inserir uma posicao maior que a lista contem
+        return head;
+    }
+    
+    int i = 1;
+    NoListaDupla *temp = head;
+
+    while (i != posicao){
+        temp = temp->prox;
+        i++;
+    }
+
+    head = dllRetira(head, temp->info);
+
+    return head;
+}
+
+NoListaDupla *dllmove(NoListaDupla *head, char *v, int posicaoFinal){
+    head = dllRetira(head, v);
+    head = dllInserePosicao(head, v, posicaoFinal);
+
+    return head;
+}
+
+NoListaDupla *dllmovePosicao(NoListaDupla *head, int posicaoAtual, int posicaoFinal){
+    int i = 1;
+    NoListaDupla *temp = head;
+
+    while (i != posicaoAtual){
+        temp = temp->prox;
+        i++;
+    }
+
+    char titulo[100];
+    strcpy(titulo, temp->info);
+
+    head = dllRetiraPosicao(head, posicaoAtual);
+    head = dllInserePosicao(head, titulo, posicaoFinal);
+
+    return head;
+}
