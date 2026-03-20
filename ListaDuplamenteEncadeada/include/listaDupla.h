@@ -19,5 +19,6 @@ NoListaDupla *dllUltimo(NoListaDupla *head);
 NoListaDupla *dllRetira(NoListaDupla *head, char *v);
 void dllLibera(NoListaDupla *head);
 NoListaDupla *dllInsereFim(NoListaDupla *head, char *v);
+NoListaDupla *dllInserePosicao(NoListaDupla *head, char *v, int posicao);
 
 #endif

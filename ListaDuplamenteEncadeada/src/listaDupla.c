@@ -1,5 +1,6 @@
 #include "listaDupla.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 NoListaDupla *dllCria(void){
@@ -22,8 +23,10 @@ NoListaDupla *dllInsere(NoListaDupla *head, char *v){
 }
 
 void dllImprime(NoListaDupla *head){
+    int i = 1;
     while (head != NULL){
-        printf("%s\n", head->info);
+        printf("%d. %s\n", i, head->info);
+        i++;
         head = head->prox;
     }
 }
@@ -120,7 +123,46 @@ NoListaDupla *dllInsereFim(NoListaDupla *head, char *v){
         head->prox = novo;
         novo->ant = head;
     } else{
-        sllInsereFim(head->prox, v);
+        dllInsereFim(head->prox, v);
     }
+    return head;
+}
+
+NoListaDupla *dllInserePosicao(NoListaDupla *head, char *v, int posicao){
+    int i = 1;
+    NoListaDupla *temp = head;
+    
+    // Se eu adicionar uma posicao negativa ou a primeira, adiciona no inicio
+    if (posicao <= 1){
+        head = dllInsere(head, v);
+        return head;
+    }
+    // Percorre até achar a posicao
+    while (i != posicao){
+        if (temp->prox != NULL){
+            temp = temp->prox;
+            i++;
+        }
+        else { 
+            if (posicao > dllComprimento(head)){
+                printf("Intervalo inválido!\nNão é possível adicionar música \"%s\" na posição %dº. Insira no fim da playlist \n", v, posicao); // Se eu inserir uma posicao maior que a lista contem
+                return head;
+            }else{
+            
+                head = dllInsereFim(head, v);
+                return head;
+            }
+        } 
+    }
+    
+    // Caso nosso no nao seja inserido no inicio ou no fim
+    NoListaDupla *novo = (NoListaDupla*) malloc(sizeof(NoListaDupla));
+    strcpy(novo->info, v);
+    
+    novo->prox = temp;
+    novo->ant = temp->ant;
+    temp->ant->prox = novo;
+    temp->ant = novo;
+    
     return head;
 }
