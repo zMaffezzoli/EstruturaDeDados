@@ -78,7 +78,10 @@ NoListaDupla *dllRetira(NoListaDupla *head, char *v){
             NoListaDupla *temp = busca;
             
             head = busca->prox;
-            head->ant = NULL;
+            
+            if (head != NULL){ // Caso o elemento seja o unico na lista
+                head->ant = NULL; 
+            }
 
             free(temp);
         }
@@ -102,7 +105,7 @@ NoListaDupla *dllRetira(NoListaDupla *head, char *v){
         return head;
     }
     
-    return NULL;
+    return head;
 }
 
 void dllLibera(NoListaDupla *head){
@@ -117,9 +120,14 @@ void dllLibera(NoListaDupla *head){
 }
 
 NoListaDupla *dllInsereFim(NoListaDupla *head, char *v){
-    if(head->prox == NULL){
+    if (head == NULL){
+       return dllInsere(NULL, v); // Caso a lista venha vazia
+    }
+    
+    if (head->prox == NULL){
         NoListaDupla *novo = (NoListaDupla*) malloc(sizeof(NoListaDupla));
         strcpy(novo->info, v);
+        novo->prox = NULL;
         head->prox = novo;
         novo->ant = head;
     } else{
@@ -129,11 +137,17 @@ NoListaDupla *dllInsereFim(NoListaDupla *head, char *v){
 }
 
 NoListaDupla *dllInserePosicao(NoListaDupla *head, char *v, int posicao){
+    
+    if (posicao < 1 || posicao > dllComprimento(head)){
+        printf("Posição inválida!\nNão é possível adicionar música \"%s\" na posição %dº. Insira uma posição válida. \n", v, posicao); // Se eu inserir uma posicao maior que a lista contem
+        return head;
+    }
+    
     int i = 1;
     NoListaDupla *temp = head;
-    
+
     // Se eu adicionar uma posicao negativa ou a primeira, adiciona no inicio
-    if (posicao <= 1){
+    if (posicao == 1){
         head = dllInsere(head, v);
         return head;
     }
@@ -144,14 +158,8 @@ NoListaDupla *dllInserePosicao(NoListaDupla *head, char *v, int posicao){
             i++;
         }
         else { 
-            if (posicao > dllComprimento(head)){
-                printf("Intervalo inválido!\nNão é possível adicionar música \"%s\" na posição %dº. Insira no fim da playlist \n", v, posicao); // Se eu inserir uma posicao maior que a lista contem
-                return head;
-            }else{
-            
-                head = dllInsereFim(head, v);
-                return head;
-            }
+            head = dllInsereFim(head, v);
+            return head;
         } 
     }
     
