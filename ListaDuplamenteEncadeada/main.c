@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 // gcc -Iinclude main.c src/listaDupla.c -o playlist.o && ./playlist.o
-void main(){
+int main(){
     printf("Criando playlist com 6 músicas padrões: \n");
 
     NoListaDupla *playlist = dllCria();
@@ -77,4 +77,6 @@ void main(){
     printf("Movendo música 2º posição para a 4º posição: \n");
     playlist = dllmovePosicao(playlist, 2, 4);
     dllImprime(playlist);
+
+    return 0;
 }
