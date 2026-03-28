@@ -1,35 +1,44 @@
 #include "pilha.h"
+#include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 // gcc -Iinclude main.c src/pilha.c -o pilha.out && ./pilha.out
 int main(){
-    Pilha *pilha = pilha_cria();
-    pilha_push(pilha, 1);
-    pilha_push(pilha, 2);
-    pilha_push(pilha, 3);
-    pilha_push(pilha, 4);
-    pilha_push(pilha, 5);
-
-
-    printf("Pilha com 5  elementos\n");
-    pilha_imprime(pilha);
-
-    printf("\n");
-
-    printf("Topo da lista %f\n", pilha_top(pilha));
-    printf("Pilha vazia: %d\n", pilha_vazia(pilha));
-
-    printf("\n");
-
-    printf("Retirando topo da lista\n");
-    pilha_pop(pilha);
-    pilha_imprime(pilha);
-
-    printf("\n");
-
-    printf("Liberando a pilha\n");
-    pilha_libera(pilha);
-    printf("Pilha vazia: %d\n", pilha_vazia(pilha));
+    Calc *calculadora = calc_cria("%.2f\n");
     
+    char entrada[100];
+
+    while (1) {
+        scanf("%s", entrada);
+
+        if (strcmp(entrada, "q") == 0) {
+            break;
+        }
+
+        // operador
+        if ((strcmp(entrada, "+") == 0) || 
+            (strcmp(entrada, "-") == 0) || 
+            (strcmp(entrada, "*") == 0) || 
+            (strcmp(entrada, "/") == 0)) {
+            calc_operador(calculadora, entrada[0]);
+        } 
+        else {
+            // tentar converter para número
+            char *end;
+            float valor = strtof(entrada, &end);
+
+            if (*end != '\0') {
+                printf("Entrada inválida: %s\n", entrada);
+                continue;
+            }
+            
+            calc_operando(calculadora, valor);
+        }
+    }
+
+    
+    calc_libera(calculadora);
+
     return 0;
 }
