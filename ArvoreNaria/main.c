@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// gcc -Iinclude src/arvoreNaria.c main.c -o campus.out && ./campus.out
+// gcc -Iinclude src/arvoreNaria.c main.c -o campis.out && ./campis.out
 int main(void){
     /*
         IFC
@@ -79,6 +79,6 @@ int main(void){
     an_libera(a1);
 
     printf("A árvore está vazia? %d\n", an_vazia(a1));
-    
+
     return 0;
 }
