@@ -1,7 +1,7 @@
 #include "listaSimples.h"
 #include <stdio.h>
 
-// gcc -Iinclude main.c src/listaSimples.c -o list.out && ./list.out
+// gcc -Iinclude main.c src/listaSimples.c -o list.o && ./list.o
 int main(){
     NoLista *lista = sllCria();
     NoLista *lista2 = sllCria();

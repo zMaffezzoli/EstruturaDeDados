@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// gcc -Iinclude src/arvoreNaria.c main.c -o campis.out && ./campis.out
+// gcc -Iinclude src/arvoreNaria.c main.c -o campis.o && ./campis.o
 int main(void){
     /*
         IFC

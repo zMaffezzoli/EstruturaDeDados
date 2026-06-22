@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// gcc -Iinclude src/arvoreBinaria.c main.c -o campeonato.out && ./campeonato.out
+// gcc -Iinclude src/arvoreBinaria.c main.c -o campeonato.o && ./campeonato.o
 int main(){
     ArvoreBinaria *campeonato = ab_cria();
     

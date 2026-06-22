@@ -1,7 +1,7 @@
 #include "fila.h"
 #include <stdio.h>
 
-// gcc -Iinclude main.c src/fila.c -o fila.out && ./fila.out
+// gcc -Iinclude main.c src/fila.c -o fila.o && ./fila.o
 int main(){
     Fila *fila = fila_cria(5);
 

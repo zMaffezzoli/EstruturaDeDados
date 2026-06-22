@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-// gcc -Iinclude main.c src/pilha.c -o pilha.out && ./pilha.out
+// gcc -Iinclude main.c src/pilha.c -o pilha.o && ./pilha.o
 int main(){
     Calc *calculadora = calc_cria("%.2f\n");
     

@@ -1,7 +1,7 @@
 #include "listaDupla.h"
 #include <stdio.h>
 
-// gcc -Iinclude main.c src/listaDupla.c -o playlist.out && ./playlist.out
+// gcc -Iinclude main.c src/listaDupla.c -o playlist.o && ./playlist.o
 int main(){
     printf("Criando playlist com 6 músicas padrões: \n");
 
