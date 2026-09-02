@@ -1,6 +1,8 @@
 package com.mycompany;
 
-import java.util.Collection;
+import java.util.Map;
+import com.mycompany.grafo.*;
+import com.mycompany.busca.*;
 
 public class Main {
 
@@ -8,10 +10,13 @@ public class Main {
 
         testarGrafoNaoDirigido();
         testarGrafoDirigido();
+
+        testarBuscasNaoDirigido();
+        testarBuscasDirigido();
     }
 
     // =========================================================
-    // GRAFO NÃO DIRIGIDO
+    // ATIVIDADE 01 - GRAFO NÃO DIRIGIDO
     // =========================================================
 
     private static void testarGrafoNaoDirigido() {
@@ -22,33 +27,20 @@ public class Main {
 
         GrafoNaoDirigido grafo = new GrafoNaoDirigido();
 
-        // -----------------------------------------------------
-        // 1. insereV()
-        // -----------------------------------------------------
-
-        System.out.println("\n--- insereV() ---");
-
         Vertice v1 = grafo.insereV();
         Vertice v2 = grafo.insereV();
         Vertice v3 = grafo.insereV();
         Vertice v4 = grafo.insereV();
 
+        System.out.println("\n--- insereV() ---");
         System.out.println("Vértices criados:");
         System.out.println(v1);
         System.out.println(v2);
         System.out.println(v3);
         System.out.println(v4);
 
-        // -----------------------------------------------------
-        // 2. getOrdem()
-        // -----------------------------------------------------
-
         System.out.println("\n--- getOrdem() ---");
         System.out.println("Ordem do grafo: " + grafo.getOrdem());
-
-        // -----------------------------------------------------
-        // 3. insereA()
-        // -----------------------------------------------------
 
         System.out.println("\n--- insereA() ---");
 
@@ -62,16 +54,8 @@ public class Main {
         System.out.println("Aresta 3: " + a3);
         System.out.println("Aresta 4: " + a4);
 
-        // -----------------------------------------------------
-        // 4. getTamanho()
-        // -----------------------------------------------------
-
         System.out.println("\n--- getTamanho() ---");
         System.out.println("Tamanho do grafo: " + grafo.getTamanho());
-
-        // -----------------------------------------------------
-        // 5. vertices()
-        // -----------------------------------------------------
 
         System.out.println("\n--- vertices() ---");
         System.out.println("Vértices:");
@@ -80,20 +64,12 @@ public class Main {
             System.out.println("  " + v);
         }
 
-        // -----------------------------------------------------
-        // 6. arestas()
-        // -----------------------------------------------------
-
         System.out.println("\n--- arestas() ---");
         System.out.println("Arestas:");
 
         for (Aresta e : grafo.arestas()) {
             System.out.println("  " + e);
         }
-
-        // -----------------------------------------------------
-        // 7. adj()
-        // -----------------------------------------------------
 
         System.out.println("\n--- adj() ---");
 
@@ -102,10 +78,6 @@ public class Main {
                     "Adjacentes de " + v + ": " + grafo.adj(v)
             );
         }
-
-        // -----------------------------------------------------
-        // 8. getA()
-        // -----------------------------------------------------
 
         System.out.println("\n--- getA() ---");
 
@@ -124,20 +96,12 @@ public class Main {
                         + grafo.getA(v1, v4)
         );
 
-        // -----------------------------------------------------
-        // 9. verticesA()
-        // -----------------------------------------------------
-
         System.out.println("\n--- verticesA() ---");
 
         System.out.println(
                 "Vértices de a1: "
                         + grafo.verticesA(a1)
         );
-
-        // -----------------------------------------------------
-        // 10. oposto()
-        // -----------------------------------------------------
 
         System.out.println("\n--- oposto() ---");
 
@@ -151,10 +115,6 @@ public class Main {
                         + grafo.oposto(v2, a1)
         );
 
-        // -----------------------------------------------------
-        // 11. grau()
-        // -----------------------------------------------------
-
         System.out.println("\n--- grau() ---");
 
         for (Vertice v : grafo.vertices()) {
@@ -163,10 +123,6 @@ public class Main {
                             + grafo.grau(v)
             );
         }
-
-        // -----------------------------------------------------
-        // 12. grauE()
-        // -----------------------------------------------------
 
         System.out.println("\n--- grauE() ---");
 
@@ -177,10 +133,6 @@ public class Main {
             );
         }
 
-        // -----------------------------------------------------
-        // 13. grauS()
-        // -----------------------------------------------------
-
         System.out.println("\n--- grauS() ---");
 
         for (Vertice v : grafo.vertices()) {
@@ -189,10 +141,6 @@ public class Main {
                             + grafo.grauS(v)
             );
         }
-
-        // -----------------------------------------------------
-        // 14. arestasE()
-        // -----------------------------------------------------
 
         System.out.println("\n--- arestasE() ---");
 
@@ -203,10 +151,6 @@ public class Main {
             );
         }
 
-        // -----------------------------------------------------
-        // 15. arestasS()
-        // -----------------------------------------------------
-
         System.out.println("\n--- arestasS() ---");
 
         for (Vertice v : grafo.vertices()) {
@@ -216,16 +160,8 @@ public class Main {
             );
         }
 
-        // -----------------------------------------------------
-        // 16. toString()
-        // -----------------------------------------------------
-
         System.out.println("\n--- toString() ---");
         System.out.println(grafo);
-
-        // -----------------------------------------------------
-        // 17. removeA()
-        // -----------------------------------------------------
 
         System.out.println("\n--- removeA() ---");
 
@@ -240,10 +176,6 @@ public class Main {
 
         System.out.println("Grafo após remover a1:");
         System.out.println(grafo);
-
-        // -----------------------------------------------------
-        // 18. removeV()
-        // -----------------------------------------------------
 
         System.out.println("\n--- removeV() ---");
 
@@ -267,7 +199,7 @@ public class Main {
 
 
     // =========================================================
-    // GRAFO DIRIGIDO
+    // ATIVIDADE 01 - GRAFO DIRIGIDO
     // =========================================================
 
     private static void testarGrafoDirigido() {
@@ -278,36 +210,20 @@ public class Main {
 
         GrafoDirigido grafo = new GrafoDirigido();
 
-        // -----------------------------------------------------
-        // 1. insereV()
-        // -----------------------------------------------------
-
-        System.out.println("\n--- insereV() ---");
-
         Vertice v1 = grafo.insereV();
         Vertice v2 = grafo.insereV();
         Vertice v3 = grafo.insereV();
         Vertice v4 = grafo.insereV();
 
+        System.out.println("\n--- insereV() ---");
         System.out.println("Vértices criados:");
         System.out.println(v1);
         System.out.println(v2);
         System.out.println(v3);
         System.out.println(v4);
 
-        // -----------------------------------------------------
-        // 2. getOrdem()
-        // -----------------------------------------------------
-
         System.out.println("\n--- getOrdem() ---");
-        System.out.println(
-                "Ordem do grafo: "
-                        + grafo.getOrdem()
-        );
-
-        // -----------------------------------------------------
-        // 3. insereA()
-        // -----------------------------------------------------
+        System.out.println("Ordem do grafo: " + grafo.getOrdem());
 
         System.out.println("\n--- insereA() ---");
 
@@ -323,19 +239,8 @@ public class Main {
         System.out.println("Aresta 4: " + a4);
         System.out.println("Aresta 5: " + a5);
 
-        // -----------------------------------------------------
-        // 4. getTamanho()
-        // -----------------------------------------------------
-
         System.out.println("\n--- getTamanho() ---");
-        System.out.println(
-                "Tamanho do grafo: "
-                        + grafo.getTamanho()
-        );
-
-        // -----------------------------------------------------
-        // 5. vertices()
-        // -----------------------------------------------------
+        System.out.println("Tamanho do grafo: " + grafo.getTamanho());
 
         System.out.println("\n--- vertices() ---");
 
@@ -343,19 +248,11 @@ public class Main {
             System.out.println("  " + v);
         }
 
-        // -----------------------------------------------------
-        // 6. arestas()
-        // -----------------------------------------------------
-
         System.out.println("\n--- arestas() ---");
 
         for (Aresta e : grafo.arestas()) {
             System.out.println("  " + e);
         }
-
-        // -----------------------------------------------------
-        // 7. adj()
-        // -----------------------------------------------------
 
         System.out.println("\n--- adj() ---");
 
@@ -365,10 +262,6 @@ public class Main {
                             + grafo.adj(v)
             );
         }
-
-        // -----------------------------------------------------
-        // 8. getA()
-        // -----------------------------------------------------
 
         System.out.println("\n--- getA() ---");
 
@@ -387,20 +280,12 @@ public class Main {
                         + grafo.getA(v1, v4)
         );
 
-        // -----------------------------------------------------
-        // 9. verticesA()
-        // -----------------------------------------------------
-
         System.out.println("\n--- verticesA() ---");
 
         System.out.println(
                 "Vértices de a1: "
                         + grafo.verticesA(a1)
         );
-
-        // -----------------------------------------------------
-        // 10. oposto()
-        // -----------------------------------------------------
 
         System.out.println("\n--- oposto() ---");
 
@@ -414,10 +299,6 @@ public class Main {
                         + grafo.oposto(v2, a1)
         );
 
-        // -----------------------------------------------------
-        // 11. grauE()
-        // -----------------------------------------------------
-
         System.out.println("\n--- grauE() ---");
 
         for (Vertice v : grafo.vertices()) {
@@ -426,10 +307,6 @@ public class Main {
                             + grafo.grauE(v)
             );
         }
-
-        // -----------------------------------------------------
-        // 12. grauS()
-        // -----------------------------------------------------
 
         System.out.println("\n--- grauS() ---");
 
@@ -440,10 +317,6 @@ public class Main {
             );
         }
 
-        // -----------------------------------------------------
-        // 13. grau()
-        // -----------------------------------------------------
-
         System.out.println("\n--- grau() ---");
 
         for (Vertice v : grafo.vertices()) {
@@ -452,10 +325,6 @@ public class Main {
                             + grafo.grau(v)
             );
         }
-
-        // -----------------------------------------------------
-        // 14. arestasE()
-        // -----------------------------------------------------
 
         System.out.println("\n--- arestasE() ---");
 
@@ -466,10 +335,6 @@ public class Main {
             );
         }
 
-        // -----------------------------------------------------
-        // 15. arestasS()
-        // -----------------------------------------------------
-
         System.out.println("\n--- arestasS() ---");
 
         for (Vertice v : grafo.vertices()) {
@@ -479,16 +344,8 @@ public class Main {
             );
         }
 
-        // -----------------------------------------------------
-        // 16. toString()
-        // -----------------------------------------------------
-
         System.out.println("\n--- toString() ---");
         System.out.println(grafo);
-
-        // -----------------------------------------------------
-        // 17. removeA()
-        // -----------------------------------------------------
 
         System.out.println("\n--- removeA() ---");
 
@@ -503,10 +360,6 @@ public class Main {
 
         System.out.println("Grafo após remover a1:");
         System.out.println(grafo);
-
-        // -----------------------------------------------------
-        // 18. removeV()
-        // -----------------------------------------------------
 
         System.out.println("\n--- removeV() ---");
 
@@ -526,5 +379,122 @@ public class Main {
 
         System.out.println("Grafo após remover v4:");
         System.out.println(grafo);
+    }
+
+
+    // =========================================================
+    // ATIVIDADE 02 - BUSCAS NO GRAFO NÃO DIRIGIDO
+    // =========================================================
+
+    private static void testarBuscasNaoDirigido() {
+
+        System.out.println("\n\n========================================");
+        System.out.println("      BUSCAS - GRAFO NAO DIRIGIDO");
+        System.out.println("========================================");
+
+        GrafoNaoDirigido grafo = new GrafoNaoDirigido();
+
+        Vertice v1 = grafo.insereV();
+        Vertice v2 = grafo.insereV();
+        Vertice v3 = grafo.insereV();
+        Vertice v4 = grafo.insereV();
+        Vertice v5 = grafo.insereV();
+        Vertice v6 = grafo.insereV();
+
+        grafo.insereA(v1, v2);
+        grafo.insereA(v1, v3);
+        grafo.insereA(v2, v4);
+        grafo.insereA(v3, v4);
+        grafo.insereA(v3, v5);
+        grafo.insereA(v4, v6);
+        grafo.insereA(v5, v6);
+
+        System.out.println("\nGrafo:");
+        System.out.println(grafo);
+
+        System.out.println("--- BUSCA EM LARGURA ---");
+
+        Map<Vertice, InfoVertice> bfs =
+                Busca.buscaEmLargura(grafo, v1);
+
+        Busca.imprimeBFS(grafo, bfs);
+
+        System.out.println("\nCaminho de " + v1 + " até " + v6 + ":");
+        Busca.imprimeCaminho(v1, v6, bfs);
+
+        System.out.println("\nCaminho de " + v1 + " até " + v5 + ":");
+        Busca.imprimeCaminho(v1, v5, bfs);
+
+        System.out.println("\n--- BUSCA EM PROFUNDIDADE ---");
+
+        Map<Vertice, InfoVertice> dfs =
+                Busca.buscaEmProfundidade(grafo, v1);
+
+        Busca.imprimeDFS(grafo, dfs);
+
+        System.out.println("\nCaminho de " + v1 + " até " + v6 + ":");
+        Busca.imprimeCaminho(v1, v6, dfs);
+
+        System.out.println("\nCaminho de " + v1 + " até " + v5 + ":");
+        Busca.imprimeCaminho(v1, v5, dfs);
+    }
+
+
+    // =========================================================
+    // ATIVIDADE 02 - BUSCAS NO GRAFO DIRIGIDO
+    // =========================================================
+
+    private static void testarBuscasDirigido() {
+
+        System.out.println("\n\n========================================");
+        System.out.println("         BUSCAS - GRAFO DIRIGIDO");
+        System.out.println("========================================");
+
+        GrafoDirigido grafo = new GrafoDirigido();
+
+        Vertice v1 = grafo.insereV();
+        Vertice v2 = grafo.insereV();
+        Vertice v3 = grafo.insereV();
+        Vertice v4 = grafo.insereV();
+        Vertice v5 = grafo.insereV();
+        Vertice v6 = grafo.insereV();
+
+        grafo.insereA(v1, v2);
+        grafo.insereA(v1, v3);
+        grafo.insereA(v2, v4);
+        grafo.insereA(v3, v4);
+        grafo.insereA(v3, v5);
+        grafo.insereA(v4, v6);
+        grafo.insereA(v5, v6);
+        grafo.insereA(v6, v1);
+
+        System.out.println("\nGrafo:");
+        System.out.println(grafo);
+
+        System.out.println("--- BUSCA EM LARGURA ---");
+
+        Map<Vertice, InfoVertice> bfs =
+                Busca.buscaEmLargura(grafo, v1);
+
+        Busca.imprimeBFS(grafo, bfs);
+
+        System.out.println("\nCaminho de " + v1 + " até " + v6 + ":");
+        Busca.imprimeCaminho(v1, v6, bfs);
+
+        System.out.println("\nCaminho de " + v1 + " até " + v5 + ":");
+        Busca.imprimeCaminho(v1, v5, bfs);
+
+        System.out.println("\n--- BUSCA EM PROFUNDIDADE ---");
+
+        Map<Vertice, InfoVertice> dfs =
+                Busca.buscaEmProfundidade(grafo, v1);
+
+        Busca.imprimeDFS(grafo, dfs);
+
+        System.out.println("\nCaminho de " + v1 + " até " + v6 + ":");
+        Busca.imprimeCaminho(v1, v6, dfs);
+
+        System.out.println("\nCaminho de " + v1 + " até " + v5 + ":");
+        Busca.imprimeCaminho(v1, v5, dfs);
     }
 }

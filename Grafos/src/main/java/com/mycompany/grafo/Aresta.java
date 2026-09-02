@@ -1,4 +1,4 @@
-package com.mycompany;
+package com.mycompany.grafo;
 
 public class Aresta {
 
